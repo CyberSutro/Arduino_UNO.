@@ -1,0 +1,26 @@
+float V2;
+int readVal;
+int analogPin = A2;
+int dt =500;
+int ledPin = 10;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(analogPin, INPUT);
+  pinMode(ledPin,OUTPUT);
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+  readVal = analogRead(analogPin);
+  V2 = (5.*readVal)/1023;
+   if (V2>4.0){
+    digitalWrite(ledPin,HIGH); 
+   }
+    if (V2<4.0){
+      digitalWrite(ledPin,LOW);
+    }
+  Serial.println(V2);
+  delay(dt);
+
+}
